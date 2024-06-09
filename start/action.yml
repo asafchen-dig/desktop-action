@@ -1,4 +1,4 @@
-name: "Docker Desktop action"
+xname: "Docker Desktop action"
 description: "Start Docker Desktop on a Github Action node"
 inputs:
   docker-desktop-build-url:
@@ -141,7 +141,7 @@ runs:
         sudo apt install qemu-kvm
         sudo apt install ~/.downloads/docker-desktop.deb qemu-kvm
         mkdir -p ~/.docker/desktop
-        echo '{"settingsVersion": 30, "licenseTermsVersion": 2}' > ~/.docker/desktop/settings.json
+        echo '{"settingsVersion": 30, "licenseTermsVersion": 2, "onlyMarketplaceExtensions": false}' > ~/.docker/desktop/settings.json
         docker context create desktop-linux --docker host=unix://${HOME}/.docker/desktop/docker.sock --description "Docker Desktop"
         docker context use desktop-linux
 
