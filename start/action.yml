@@ -146,6 +146,7 @@ runs:
         docker context use desktop-linux
 
         /opt/docker-desktop/bin/com.docker.backend &
+        cat ~/.docker/desktop/settings.json
 
     - name: Wait for Docker to be up and running
       shell: bash
