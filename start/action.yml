@@ -141,7 +141,7 @@ runs:
         sudo apt install qemu-kvm
         sudo apt install ~/.downloads/docker-desktop.deb qemu-kvm
         mkdir -p ~/.docker/desktop
-        echo '{"settingsVersion": 30, "licenseTermsVersion": 2, "onlyMarketplaceExtensions": false}' > ~/.docker/desktop/settings.json
+        echo '{"settingsVersion": 30, "licenseTermsVersion": 2}' > ~/.docker/desktop/settings.json
         docker context create desktop-linux --docker host=unix://${HOME}/.docker/desktop/docker.sock --description "Docker Desktop"
         docker context use desktop-linux
 
@@ -154,3 +154,7 @@ runs:
         until docker ps; do echo "docker not ready, sleep 10 s and try again"; sleep 10; done
         echo "Docker started and ready"
         docker version
+
+    - name: Edit setting file
+      shell: bash
+      run: echo $(jq '. += {onlyMarketplaceExtensions: false}' ~/.docker/desktop/settings.json) > ~/.docker/desktop/settings.json
