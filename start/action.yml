@@ -159,3 +159,4 @@ runs:
       shell: bash
       run: |
         echo $(jq '. += {onlyMarketplaceExtensions: false}' ~/.docker/desktop/settings.json) > ~/.docker/desktop/settings.json
+        echo ~/.docker/desktop/settings.json
