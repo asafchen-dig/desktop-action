@@ -157,4 +157,5 @@ runs:
 
     - name: Edit setting file
       shell: bash
-      run: echo $(jq '. += {onlyMarketplaceExtensions: false}' ~/.docker/desktop/settings.json) > ~/.docker/desktop/settings.json
+      run: |
+        echo $(jq '. += {onlyMarketplaceExtensions: false}' ~/.docker/desktop/settings.json) > ~/.docker/desktop/settings.json
